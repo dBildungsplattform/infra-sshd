@@ -1,19 +1,12 @@
-name: Push Charts to helm-charts-registry manually with specified version
+name: Push Charts to helm-charts-registry
 
 on:
-  workflow_dispatch:
-    inputs:
-      chart_version:
-        type: string
-        description: "Chart version"
-        required: true
-      image_tag:
-        type: string
-        description: "image tag"
-        required: true
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
 
 concurrency:
-  group: infra-sshd-chart-manual
+  group: infra-sshd-chart
   cancel-in-progress: true
 
 jobs:
@@ -26,8 +19,5 @@ jobs:
     uses: dBildungsplattform/dbp-github-workflows/.github/workflows/chart-release.yaml@5.0.0
     secrets: inherit
     with:
+      chart_path: .
       chart_name: infra-sshd
-      helm_chart_version_generation: specified 
-      image_tag_generation: specified 
-      helm_chart_version: ${{ inputs.chart_version }}
-      image_tag: ${{ inputs.image_tag }}
