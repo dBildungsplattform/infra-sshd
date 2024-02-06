@@ -3,7 +3,7 @@ A bastion host (also jump server or jump service) is usually set up as a single 
 
 ## TL;DR;
 ```
-$ helm upgrade infra-sshd ./infra-sshd --install --create-namespace -n service
+$ helm upgrade infra-sshd ./infra-sshd --install --create-namespace -n sshd-service
 ```
 
 ## Introduction
@@ -20,12 +20,12 @@ This chart can be installed in two flavors:
 ## Installing the chart
 Prior to installing, please update the authorized keys file. This file is used to create a configmap which eventually tells the daemon which keys to grant access. Currently, only a "support" user is configured in the image. For scalability reasons, authorized key files are separated by users, e.g. user support: support_authorized_keys.
 ```
-$ helm upgrade infra-sshd ./infra-sshd --install --create-namespace -n service
+$ helm upgrade infra-sshd ./infra-sshd --install --create-namespace -n sshd-service
 ```
 
 ## Uninstalling the chart
 ```
-$ helm -n service delete infra-sshd
+$ helm -n sshd-service delete infra-sshd
 ```
 
 ## Parameters
