@@ -21,3 +21,7 @@ jobs:
     with:
       chart_path: .
       chart_name: infra-sshd
+      helm_chart_version_generation: specified
+      image_tag_generation: specified
+      helm_chart_version: ${{ github.ref_name }}
+      image_tag: ${{ github.ref_name }}
