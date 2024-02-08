@@ -2,6 +2,8 @@ name: "Scan Helm on push"
 
 on:
   push:
+    tags-ignore:
+      - '*'
 
 concurrency:
   group: infra-sshd-scan-helm-${{ github.event.ref }}
