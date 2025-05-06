@@ -1,4 +1,4 @@
-name: Push Chart to helm-charts-registry
+name: On Push Push Chart to helm-charts-registry 
 on:
   push:
     branches-ignore:
@@ -17,6 +17,7 @@ jobs:
     uses: dBildungsplattform/dbp-github-workflows/.github/workflows/chart-release.yaml@7
     secrets: inherit
     with:
+      chart_path: .
       chart_name: infra-sshd
       helm_chart_version_generation: ticket_from_branch_timestamp
       image_tag_generation: chart_yaml

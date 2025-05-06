@@ -1,4 +1,4 @@
-name: Push Charts to helm-charts-registry
+name: On Tag Push Charts to helm-charts-registry
 
 on:
   push:
@@ -22,6 +22,5 @@ jobs:
       chart_path: .
       chart_name: infra-sshd
       helm_chart_version_generation: specified
-      image_tag_generation: specified
+      image_tag_generation: chart_yaml
       helm_chart_version: ${{ github.ref_name }}
-      image_tag: ${{ github.ref_name }}
