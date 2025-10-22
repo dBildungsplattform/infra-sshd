@@ -51,6 +51,11 @@ spec:
           {{- with .Values.additionalVolumeMounts }}
             {{- toYaml . | nindent 10 }}
           {{- end }}
+          
+        {{- if .Values.livenessProbe.enabled }}
+        livenessProbe: {{- omit .Values.livenessProbe "enabled" | toYaml | nindent 10 }}
+        {{- end }}
+
       volumes:
         {{- if .Values.sshdConfig }}
         - name: sshd-config
